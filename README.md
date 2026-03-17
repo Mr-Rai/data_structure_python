@@ -1,12 +1,12 @@
-| # | Pattern                           s| Core DS Used          | Difficulty    | Status    |
-|---|-----------------------------------|-----------------------|---------------|-----------|
-| 1 | [Sliding Window](#sliding-window) | list, deque           |Medium         | Pending   |
-| 2 | [Two Pointers](#two-pointers)     | list                  |Easy-Medium    | Pending   |
-| 3 | [Monotonic Stack](#monotonic-stack)| stack (list)         | Medium-Hard   | Pending   |
-| 4 | [Monotonic Queue](#monotonic-queue)| deque                | Hard          | Pending   |
-| 5 | [Prefix Sum](#prefix-sum)          | list, dict           | Medium        | Pending   |
-| 6 | [Fast & Slow Pointers](#fast--slow-pointers) | linked list / list | Medium      | Pending   |
-| 7 | [Binary Search on Answer](#binary-search-on-answer) | list        | Medium-Hard | Pending   |
+| # | Patterns                           | Core DS Used                 | Difficulty    | Status |
+|---|------------------------------------|------------------------------|---------------|--------|
+| 1 | [Sliding Window](#sliding-window)  | list, deque                  |Medium         | ✅    |
+| 2 | [Two Pointers](#two-pointers)      | list                         |Easy-Medium    | ⌛    |
+| 3 | [Monotonic Stack](#monotonic-stack)| stack (list)                 | Medium-Hard   | ⌛    |
+| 4 | [Monotonic Queue](#monotonic-queue)| deque                        | Hard          | ⌛    |
+| 5 | [Prefix Sum](#prefix-sum)          | list, dict                   | Medium        | ⌛    |
+| 6 | [Fast & Slow Pointers](#fast--slow-pointers) | linked list / list | Medium        | ⌛    |
+| 7 | [Binary Search on Answer](#binary-search-on-answer) | list        | Medium-Hard   | ⌛    |
 
 ----------------
 
