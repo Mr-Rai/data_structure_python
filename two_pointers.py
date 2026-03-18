@@ -75,17 +75,82 @@ print(three_sums(nums=[-1, 0, 1, 2, -1, -4]))  # expected [[-1,-1,2], [-1,0,1]]
 
 
 def move_zeroes(nums: list) -> list:
+    """
+    This is actually wrong because it creates a new list instead of
+    modifying the original one in place, but it is still a valid
+    solution to the problem.
+    """
     zero_count = 0
     filtered_list = []
     for i in range(len(nums)):
         if nums[i] == 0:
             zero_count += 1
-            nums.
         else:
             filtered_list.append(nums[i])
     return filtered_list + [0] * zero_count
 
 
+def move_zeroes_in_place(nums: list) -> list:
+    """
+    This is the correct solution to the problem, it modifies the original
+    list in place.
+    """
+    zero_pos = 0
+    # move items left where there is zero
+    for next_point in range(len(nums)):
+        if nums[next_point] != 0:
+            nums[zero_pos] = nums[next_point]
+            zero_pos += 1
+    # replace all the items from zero_pos to end with zero
+    while zero_pos < len(nums):
+        nums[zero_pos] = 0
+        zero_pos += 1
+    return nums
+
+
 unfiltred_list = [0, 1, 0, 3, 12]
-filtered_list = move_zeroes(nums=unfiltred_list)
-print(id(unfiltred_list) is id(filtered_list))
+filtered_list_invalid = move_zeroes(nums=unfiltred_list)
+filtered_list_valid = move_zeroes_in_place(nums=unfiltred_list)
+print(
+    f"returned list memory address in {move_zeroes.__name__}: {id(unfiltred_list) == id(filtered_list_invalid)}"
+)
+print(
+    f"returned list memory address in {move_zeroes_in_place.__name__}: {id(unfiltred_list) == id(filtered_list_valid)}"
+)
+
+# -------------------------------
+
+
+def is_palindrome(s: str) -> bool:
+    s_cleaned = "".join(char.lower() for char in s if char.isalnum())
+    return s_cleaned == s_cleaned[::-1]
+
+
+st = "A man, a plan, a canal: Panama"
+print(is_palindrome(s=st))
+
+
+def is_palindrome_twopointer(s: str) -> bool:
+    s = "".join(c.lower() for c in s if c.isalnum())
+    left, right = 0, len(s) - 1
+
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+
+    return True
+
+
+import timeit
+
+# using cpython slice [::-1] (It runs code in C language which is must faster)
+t1 = timeit.timeit(lambda: is_palindrome(st * 100), number=10000)
+
+# using while loop
+t2 = timeit.timeit(lambda: is_palindrome_twopointer(st * 100), number=10000)
+
+print(f"Slice: {t1:.3f}s")
+print(f"Two pointer: {t2:.3f}s")
+print(f"Slice is: {(t1/t2)*100} % Faster")
